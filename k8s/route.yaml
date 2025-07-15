@@ -1,0 +1,19 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: next-k8s
+  namespace: fe-experiment
+  labels:
+    app: next-k8s
+spec:
+  host: fe-experiment.okd1.shinhancard.rd
+  to:
+    kind: Service
+    name: next-k8s
+    weight: 100
+  port:
+    targetPort: 80
+  tls:
+    termination: edge # https 지원 원치 않으면 이 항목 제거
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None
