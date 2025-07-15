@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: next-k8s
   namespace: fe-experiment
+  labels:
+    app: next-k8s
 spec:
   selector:
     app: next-k8s
@@ -10,4 +12,5 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 3000
+      name: http
   type: ClusterIP

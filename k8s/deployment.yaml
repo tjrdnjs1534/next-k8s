@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: next-k8s
   namespace: fe-experiment
+  labels:
+    app: next-k8s
 spec:
   replicas: 1
   selector:
@@ -14,10 +16,17 @@ spec:
         app: next-k8s
     spec:
       containers:
-        - name: nextjs
+        - name: next-k8s
           image: ghcr.io/tjrdnjs1534/next-k8s:latest
           ports:
             - containerPort: 3000
+          resources:
+            limits:
+              memory: "768Mi"
+              cpu: "500m"
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
           env:
             - name: NODE_ENV
               value: "production"
