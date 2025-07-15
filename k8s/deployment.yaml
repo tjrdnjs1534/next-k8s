@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: next-k8s
+  namespace: fe-experiment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: next-k8s
+  template:
+    metadata:
+      labels:
+        app: next-k8s
+    spec:
+      containers:
+        - name: nextjs
+          image: ghcr.io/tjrdnjs1534/next-k8s:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: "production"
