@@ -12,7 +12,7 @@ spec:
     name: next-k8s
     weight: 100
   port:
-    targetPort: 80
+    targetPort: http
   tls:
     termination: edge # https 지원 원치 않으면 이 항목 제거
     insecureEdgeTerminationPolicy: Redirect
